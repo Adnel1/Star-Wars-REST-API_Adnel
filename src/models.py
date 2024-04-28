@@ -68,6 +68,12 @@ class UserPeopleFavorite(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     people_id = db.Column(db.Integer, db.ForeignKey('people.id'), primary_key=True)
 
+    def serialize(self):
+        return {
+            "user_id": self.user_id,
+            "people_id": self.people_id
+        }
+
 class UserPlanetFavorite(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     planet_id = db.Column(db.Integer, db.ForeignKey('planets.id'), primary_key=True)
